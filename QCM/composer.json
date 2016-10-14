@@ -1,0 +1,14 @@
+{
+    "require": {
+        "silex/silex": "~2.0",
+        "monolog/monolog": "1.21.0",
+        "doctrine/dbal": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "App": "src/"
+            
+        },
+        "psr-4" :{"Services\\" : "services/"}
+    }
+}
