@@ -1,0 +1,42 @@
+<div class="quiz-area" ng-show="inProgress">
+    <div ng-show="!quizOver">
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger progress-bar-striped" ng-style="{width: progress + '%'}">
+            </div>
+        </div>
+        <h1>question {{id + 1}}/{{length}}</h1>
+        <h2 id="question">{{question}}</h2>
+        <ul id="options">
+            <li ng-repeat="option in options" class='answers'>
+                <label>
+                    <input ng-click="checkAnswer()" data-index='{{$index}}' type="radio" name="answer" value="{{option}}">
+                    {{option}}
+                </label>
+            </li>
+        </ul>
+
+        <div ng-show="!answerMode">
+            <span ng-show="correctAns">That is correct!</span>
+            <span ng-show="!correctAns">Sorry, that is an incorrect answer.</span>
+        </div>
+    </div>
+
+    <div ng-show="quizOver">
+        <h2>Résultats du Quiz</h2>
+        <div id="score">
+            <p>Bonnes réponses : {{correct}}/{{length}} </p>
+            <p>Temps : {{temps}} secondes </p>
+            <p>Pénalités : {{penalite}} secondes</p>
+            <p>Temps total : {{temps + penalite}} </p>
+            
+        </div>
+        <a href="#robot" class="btn btn-default" >Commander le robot</a>
+    </div>
+
+
+</div>
+<!--
+<div class="intro" ng-show="!inProgress">
+    <p>Welcome to the QuizApp</p>
+    <button id="startQuiz" ng-click="start()">Start the Quiz</button>
+</div>-->

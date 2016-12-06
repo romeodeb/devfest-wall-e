@@ -1,0 +1,22 @@
+<div class="container" style="margin-top:3%">
+
+  <h1>Votre place</h1>
+  <div ng-show="result" class="endgame">
+
+  <div class="position position{{result.position}}">{{result.position}}</div>
+  <!-- <img class="icon" ng-src="assets/img/top{{result.position}}.png"/> -->
+  <div class="pseudo">{{result.username}}</div>
+  <div class="points">{{points}} pts</div>
+
+  </div>
+
+  <div class="col-md-6 col-md-offset-4">
+  <a ng-href="#/scores" class="btn-lego-continue" style="margin-top:30px;display:block">Retour aux scores</a>
+  </div>
+
+</div>
+
+<video class="bg" playsinline preload="auto">
+  <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+        <source src="assets/img/walle01.mp4" type="video/mp4">
+</video>

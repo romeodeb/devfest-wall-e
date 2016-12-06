@@ -1,0 +1,31 @@
+<div ng-show="!countdown" class="logincontainer col-md-7 col-md-offset-4">
+
+    <form class="form-horizontal" name="form" ng-submit="vm.login()" role="form">
+
+        <h1>Vos informations</h1>
+        <div class="form-group">
+            <div class="col-sm-4" style="color:red;font-size:120%">{{message}}</div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label class="col-sm-2" for="username">Pseudo</label>
+            <div class="col-sm-3">
+                <input type="text" name="username" id="username" maxlength="30" class="form-control" ng-model="vm.username" required />
+                <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Le pseudo est obligatoire</span>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': form.mail.$dirty && form.mail.$error.required }">
+            <label class="col-sm-2" for="mail">Email</label>
+            <div class="col-sm-4">
+                <input type="mail" name="mail" id="mail" maxlength="60" class="form-control" ng-model="vm.mail" required />
+                <span ng-show="form.mail.$dirty && form.mail.$error.required" class="help-block">L'email est obligatoire</span>
+            </div>
+        </div>
+
+        <div class="form-actions col-md-offset-2">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn-lego-continue-mini">Suivant</button>
+        </div>
+    </form>
+</div>
+

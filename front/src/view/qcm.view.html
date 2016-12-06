@@ -1,0 +1,92 @@
+<div id="alert" style="display:none"></div>
+
+
+<video ng-show="countdown" class="countdown" playsinline preload="auto">
+  <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+        <source src="assets/img/countdown2.mp4" type="video/mp4">
+</video>
+
+<audio class="audioQuizz" src="assets/audio/mass_effect01.ogg">
+
+</audio>
+
+<div ng-show="!countdown" class="container quizzcontainer">
+
+    <div class="counter" ng-show="!gameover">
+
+        <div class="inner">{{minutes}}:{{seconds}}</div>
+        <div class="bg">88:88</div>
+        <div class="penalite" style="display:none">Pénalité {{penaliteBadAnswer}} secondes</div>
+
+    </div>
+
+    <div ng-show="!quizzTermine && !gameover">    
+
+        <div class="row">
+             <div class="col-md-12"><h1>Question {{numquestion}}/{{totalQuestion}}</h1></div>
+        </div>
+
+        <div class="row question">
+             <div ng-show="!quizzTermine" class="progress-wrap progress" data-progress-percent="25">
+                <div class="progress-bar progress"></div>
+             </div>
+             <div class="col-md-2"><img class="logo" src="assets/img/{{currentQuestion.theme}}.png"/> </div>
+             <div class="col-md-10"><h4><span ng-bind-html="currentQuestion.question | unsafe"></span></h4></div>
+                     <!-- Change the below data attribute to play -->
+        </div>
+
+
+        <div>
+
+            <div class="row reponse" ng-repeat="reponse in currentQuestion.reponses" ng-click="checkAnswer($index)">
+                 <div class="col-md-12">{{reponse}}</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div> <!-- /container --> 
+
+<input id="robotcontrol" type="text" style="display:none"/>
+
+<div ng-show="quizzTermine && !gameover" style="width:1000px;margin:auto;text-align:center;margin-top:1em">
+
+
+        <div class="tvshow">
+            <iframe class="tvshowFrame" width="466" height="340"  src="http://192.168.1.100:8081"></iframe>
+        </div>
+        <div class="introrobot"><img src="assets/img/keyboard.png"/><br>Utilisez les flèches du clavier pour diriger Wall-E</div>
+        <div class="stopbutton" ng-click="endGame()">Ce bouton termine le jeu ! <br>Appuyez dès que vous avez terminé correctement la construction Lego</div>
+</div>
+
+
+<div class="container" ng-show="gameover && gameoverTimeLimit">
+
+        <div class="gameover_timelimit">
+
+            <img src="assets/img/gameoverbg.png"/>
+            <div class="message">Le temps est épuisé !</div>
+
+        </div>
+
+</div>
+
+<div class="container" ng-show="gameover && gameoverOk" style="margin-top:18em">
+
+    <div class="message">Merci de valider votre fin de partie auprès d'un responsable du stand</div>
+
+    <form class="form-horizontal">
+
+        <div class="form-group">        
+            <div class="col-md-offset-3 col-sm-3">
+                <input type="password" name="confirmation" ng-model="endGamePassword" class="form-control"/>
+            </div>
+            <div class="col-sm-1">
+                <input type="button" name="" class="btn btn-primary" value="OK" ng-click="endGameConfirm()"/>
+            </div>
+        </div>
+
+    </form>
+
+</div>

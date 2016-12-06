@@ -1,0 +1,17 @@
+<div class="container quizzcontainer">
+
+    <div class="row">
+         <div class="col-md-11 col-md-offset-1"><h1>Choix du quizz</h1></div>
+    </div>
+
+    <div class="row">
+
+         <ng-repeat ng-repeat="theme in themes">
+
+            <div class="col-md-4 col-md-offset-1 theme"><a ng-href="#/quizz/{{theme.code}}"><img class="logo" src="assets/img/{{theme.code}}.png"/></a></div>
+
+         </ng-repeat>
+        
+    </div>
+
+</div> <!-- /container -->        

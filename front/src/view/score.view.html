@@ -1,0 +1,38 @@
+<div class="container">
+
+
+<div class="row podiumcontainer">
+
+	<div class="col-md-1"></div>
+	<div class="col-md-10 podium">
+	  
+
+	<div ng-repeat="place in scores| limitTo : 3" class="place{{$index + 1}}">{{place.username}}<br/><span class="points">{{getPoints(place)}} pts</span></div>
+
+	  <img src="assets/img/podium.png"/>
+	  <div class="start">
+	      <a ng-href="#/login" class="btn-lego-continue">Commencer la partie</a>      
+	  </div>
+
+	</div>
+	<div class="col-md-1"></div>
+
+</div>
+
+<div class="row rowscore_header">
+          <div class="col-md-1">#</div>
+          <div class="col-md-8">Pseudo</div>
+          <div class="col-md-2">Techno</div>
+          <div class="col-md-1">Points</div>
+</div>
+
+<!-- FOREACH SCOR-->
+      <div class="row rowscore" ng-repeat="place in scores| limitTo : 10 : 3">
+          <div class="col-md-1">{{$index + 4}}</div>
+          <div class="col-md-8">{{place.username}}</div>
+          <div class="col-md-2">  <img class="logo" src="assets/img/{{place.theme}}.png"/> </div>
+          <div class="col-md-1">{{getPoints(place)}}</div>
+      </div>
+
+     
+</div> <!-- /container -->    
